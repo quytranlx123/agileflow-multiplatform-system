@@ -20,13 +20,31 @@
 ## 📁 Cấu trúc thư mục
 
 agileflow-multiplatform-system/
-├── backend/ ← Spring Boot API
-├── web-frontend/ ← React Web UI
-├── mobile-app/ ← React Native (Expo)
-├── desktop-app/ ← Electron + React
-├── shared/ ← API docs, schema, interface chung
-└── README.md
-
+├── backend/                # Spring Boot API (REST, JWT, JPA)
+│   ├── src/                # Source code Java (controller, service, repo)
+│   └── ...                 # File cấu hình, Dockerfile, README backend
+│
+├── web-frontend/           # Giao diện Web (React + Tailwind CSS)
+│   ├── public/             # Static assets
+│   ├── src/                # Component, page, router, service call
+│   └── ...                 # Cấu hình Webpack/Vite, env, README web
+│
+├── mobile-app/             # Ứng dụng di động (React Native + Expo)
+│   ├── assets/             # Icon, image
+│   ├── src/                # Screen, navigation, api, component mobile
+│   └── ...                 # App config, README mobile
+│
+├── desktop-app/            # Ứng dụng desktop (Electron + React)
+│   ├── public/             # HTML Shell
+│   ├── src/                # Main & Renderer process
+│   └── ...                 # Electron config, README desktop
+│
+├── shared/                 # Tài liệu chung
+│   ├── api-specs/          # Swagger/OpenAPI specs
+│   ├── interfaces/         # Interface dùng chung (TypeScript, DTO)
+│   └── docs/               # Tài liệu dự án (Agile Sprint, Report)
+│
+└── README.md               # Mô tả chính của dự án
 
 ---
 

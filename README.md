@@ -19,32 +19,7 @@
 
 ## 📁 Cấu trúc thư mục
 
-agileflow-multiplatform-system/
-├── backend/                # Spring Boot API (REST, JWT, JPA)
-│   ├── src/                # Source code Java (controller, service, repo)
-│   └── ...                 # File cấu hình, Dockerfile, README backend
-│
-├── web-frontend/           # Giao diện Web (React + Tailwind CSS)
-│   ├── public/             # Static assets
-│   ├── src/                # Component, page, router, service call
-│   └── ...                 # Cấu hình Webpack/Vite, env, README web
-│
-├── mobile-app/             # Ứng dụng di động (React Native + Expo)
-│   ├── assets/             # Icon, image
-│   ├── src/                # Screen, navigation, api, component mobile
-│   └── ...                 # App config, README mobile
-│
-├── desktop-app/            # Ứng dụng desktop (Electron + React)
-│   ├── public/             # HTML Shell
-│   ├── src/                # Main & Renderer process
-│   └── ...                 # Electron config, README desktop
-│
-├── shared/                 # Tài liệu chung
-│   ├── api-specs/          # Swagger/OpenAPI specs
-│   ├── interfaces/         # Interface dùng chung (TypeScript, DTO)
-│   └── docs/               # Tài liệu dự án (Agile Sprint, Report)
-│
-└── README.md               # Mô tả chính của dự án
+<pre lang="text"><code> agileflow-multiplatform-system/ ├── backend/ # Spring Boot API (REST, JWT, JPA) │ ├── src/ # Source code Java (controller, service, repo) │ └── ... # File cấu hình, Dockerfile, README backend │ ├── web-frontend/ # Giao diện Web (React + Tailwind CSS) │ ├── public/ # Static assets │ ├── src/ # Component, page, router, service call │ └── ... # Vite/Webpack config, README web │ ├── mobile-app/ # Ứng dụng di động (React Native + Expo) │ ├── assets/ # Icon, hình ảnh tĩnh │ ├── src/ # Screens, navigation, API │ └── ... # App config, README mobile │ ├── desktop-app/ # Ứng dụng desktop (Electron + React) │ ├── public/ # Shell HTML │ ├── src/ # Main & Renderer process │ └── ... # Cấu hình Electron │ ├── shared/ # Giao diện chung & API spec │ ├── api-specs/ # Swagger / OpenAPI │ ├── interfaces/ # Interface TypeScript chung │ └── docs/ # Tài liệu kỹ thuật & agile │ └── README.md # Mô tả tổng quan dự án </code></pre>
 
 ---
 

@@ -114,3 +114,8 @@ agileflow-multiplatform-system/
 ## 📄 Giấy phép
 
 MIT License.
+
+## 📚 Tài liệu liên quan
+
+- 🔧 [Ghi chú cấu hình Spring Boot](./SPRINGBOOTNOTES.md)
+- 📜 [Hướng dẫn đóng góp](./CONTRIBUTING.md)

@@ -14,6 +14,7 @@
 | Desktop App | Electron + React                 |
 | Realtime    | WebSocket / Firebase             |
 | DevOps      | Docker, GitHub Actions, Firebase Hosting |
+| Database    | Postgres                         |
 
 ---
 

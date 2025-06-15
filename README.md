@@ -17,3 +17,11 @@ agileflow-multiplatform-system/
 ├── desktop-app/          ← Electron + React
 ├── shared/               ← API docs, interface chung
 └── README.md
+
+| Mức nâng cao                       | Gợi ý                      |
+| ---------------------------------- | -------------------------- |
+| 💬 Realtime comment                | Socket.io / Firebase       |
+| 🌐 Đa ngôn ngữ                     | i18n cho frontend          |
+| 🧠 AI gợi ý task, tự chia deadline | GPT API, Rule-based engine |
+| 📅 Lịch tích hợp (Google Calendar) | Google API                 |
+| 📦 Export dữ liệu                  | PDF, CSV                   |

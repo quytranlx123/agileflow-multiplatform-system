@@ -17,6 +17,16 @@
 
 ---
 
+## 🛠️ Công cụ
+
+| Layer       |            Tools                 |
+|-------------|----------------------------------|
+| IDE         | Spring tool suite(Backend), VSCode(Frontend)|
+
+
+
+---
+
 ## 📁 Cấu trúc thư mục
 
 ```text

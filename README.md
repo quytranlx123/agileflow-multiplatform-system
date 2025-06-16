@@ -9,7 +9,7 @@
 | Layer       | Công nghệ                        |
 |-------------|----------------------------------|
 | Backend     | Spring Boot (REST API, JWT, JPA) |
-| Web UI      | React + Tailwind CSS             |
+| Web UI      | React + Boostrap                 |
 | Mobile App  | React Native (Expo)              |
 | Desktop App | Electron + React                 |
 | Realtime    | WebSocket / Firebase             |

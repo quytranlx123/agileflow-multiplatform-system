@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+	<!-- Main Layout -->
+	
+	<div th:replace="fragments/sidebar :: sidebar"></div>
+
+
+	<!-- JavaScript -->
+	<script src="/config.js"></script>
+	<script th:src="@{/js/main.js}" type="module"></script>
+</body>
+
+</html>

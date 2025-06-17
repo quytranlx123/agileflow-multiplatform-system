@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Đăng nhập</title>
+
+	<!-- Tailwind CSS & Flowbite -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body class="relative">
+
+	<!-- ✅ Overlay -->
+	<div id="global-loading"
+		class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
+		<div class="relative">
+			<div class="h-24 w-24 rounded-full border-t-8 border-b-8 border-gray-200"></div>
+			<div
+				class="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin">
+			</div>
+		</div>
+	</div>
+
+	<!-- ✅ Nội dung đăng nhập -->
+	<div class="container mx-auto py-10">
+		<div class="login-container max-w-md mx-auto bg-white p-6 rounded shadow text-center">
+
+			<div th:if="${param.error}" class="alert alert-danger mb-4 text-red-600">
+				Tên đăng nhập hoặc mật khẩu không đúng.
+			</div>
+
+			<!-- Logo -->
+			<i class="fa-solid fa-bus login-logo text-4xl text-blue-600 mb-4"></i>
+
+			<h2 class="mb-6 text-xl font-semibold">Đăng nhập hệ thống</h2>
+			<div th:if="${param.error}" class="mb-4 text-red-600 text-sm">
+				Tên đăng nhập hoặc mật khẩu không đúng.
+			</div>
+			<form th:action="@{/login}" method="post" onsubmit="showLoading()" novalidate>
+				<div class="mb-4 text-start">
+					<label for="username" class="block mb-1">Tên đăng nhập</label>
+					<input type="text" id="username" name="username" required class="w-full border rounded px-3 py-2">
+				</div>
+
+				<div class="mb-4 text-start">
+					<label for="password" class="block mb-1">Mật khẩu</label>
+					<input type="password" id="password" name="password" required
+						class="w-full border rounded px-3 py-2">
+					<div class="mt-2">
+						<a href="#" class="text-sm text-blue-500 hover:underline">Quên mật khẩu?</a>
+					</div>
+				</div>
+
+				<button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+					Đăng nhập
+				</button>
+			</form>
+
+			<!-- Overlay loading -->
+			<div id="global-loading"
+				class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
+				<div class="relative">
+					<div class="h-24 w-24 rounded-full border-t-8 border-b-8 border-gray-200"></div>
+					<div
+						class="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- JS -->
+	<script>
+		function showLoading() {
+			const overlay = document.getElementById('global-loading');
+			if (overlay) {
+				overlay.classList.remove('hidden');
+
+				// Ẩn sau 1.5s nếu vẫn ở trang login
+				setTimeout(() => {
+					overlay.classList.add('hidden');
+				}, 1500);
+			}
+		}
+
+		// Enter key → submit nếu không phải textarea
+		document.addEventListener('keydown', function (event) {
+			if (event.key === 'Enter') {
+				const active = document.activeElement;
+				if (active && active.tagName !== 'TEXTAREA') {
+					event.preventDefault();
+					document.querySelector('form').submit();
+				}
+			}
+		});
+	</script>
+
+
+</body>
+
+</html>

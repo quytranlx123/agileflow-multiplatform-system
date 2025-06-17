@@ -121,6 +121,53 @@
 					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
+
+			<!-- Plugin để gọi lệnh npm từ Maven -->
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.14.1</version>
+				<executions>
+					<!-- Cài Node và NPM -->
+					<execution>
+						<id>install-node-and-npm</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<configuration>
+							<nodeVersion>v22.16.0</nodeVersion> <!-- hoặc v20 tùy -->
+							<npmVersion>10.9.2</npmVersion>
+						</configuration>
+					</execution>
+
+					<!-- Cài thư viện (npm install) -->
+					<execution>
+						<id>npm-install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<phase>generate-resources</phase>
+						<configuration>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+
+					<!-- Build frontend (npm run build) -->
+					<execution>
+						<id>npm-run-build</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<phase>generate-resources</phase>
+						<configuration>
+							<arguments>run build</arguments>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<workingDirectory>frontend</workingDirectory>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

@@ -1,5 +1,7 @@
 package com.agileflow.config;
 
+import java.io.IOException;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -7,27 +9,44 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.stereotype.Component;
+
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+	@Component
+	public class NoCacheFilter implements Filter {
+		@Override
+		public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+				throws IOException, ServletException {
+			HttpServletResponse httpResponse = (HttpServletResponse) response;
+			httpResponse.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+			httpResponse.setHeader("Pragma", "no-cache");
+			httpResponse.setHeader("Expires", "0");
+			chain.doFilter(request, response);
+		}
+	}
+
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf(csrf -> csrf.disable()) // Tắt CSRF (nên bật khi dùng POST/PUT)
-				.authorizeHttpRequests(auth -> auth
-						// Cho phép truy cập không cần đăng nhập đối với các đường dẫn cần thiết:
-						.requestMatchers("/login", "/register", "/css/**", "/js/**", "/images/**").permitAll()
-
-						// Các đường dẫn khác yêu cầu xác thực:
-						.requestMatchers("/admin/**").hasRole("ADMIN").requestMatchers("/user/**")
-						.hasAnyRole("USER", "ADMIN")
-
-						// Tất cả các yêu cầu còn lại phải xác thực:
-						.anyRequest().authenticated())
+		http.csrf(csrf -> csrf.disable())
+				.authorizeHttpRequests(
+						auth -> auth.requestMatchers("/login", "/register", "/css/**", "/js/**", "/images/**")
+								.permitAll().requestMatchers("/admin/**").hasRole("ADMIN").requestMatchers("/user/**")
+								.hasAnyRole("USER", "ADMIN").anyRequest().authenticated())
 				.formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/", true).permitAll())
 				.logout(logout -> logout.invalidateHttpSession(true).clearAuthentication(true)
-						.logoutSuccessUrl("/login?logout").permitAll());
+						.deleteCookies("JSESSIONID") // Xóa cookie session
+						.logoutSuccessUrl("/login?logout").permitAll())
+				.headers(headers -> headers.cacheControl().disable().frameOptions().disable());
 
 		return http.build();
 	}

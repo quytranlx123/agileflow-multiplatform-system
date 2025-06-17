@@ -5,13 +5,34 @@
 
 <body>
 	<!-- Main Layout -->
-	
+
 	<div th:replace="fragments/sidebar :: sidebar"></div>
 
 
 	<!-- JavaScript -->
 	<script src="/config.js"></script>
 	<script th:src="@{/js/main.js}" type="module"></script>
+	<script>
+		(function () {
+			// Ngăn chặn back button
+			window.history.pushState(null, null, window.location.href);
+			window.onpopstate = function () {
+				window.history.pushState(null, null, window.location.href);
+			};
+
+			// Ngăn cache
+			if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_BACK_FORWARD) {
+				window.location.replace('/login');
+			}
+
+			// Disable caching
+			window.onpageshow = function (event) {
+				if (event.persisted) {
+					window.location.reload();
+				}
+			};
+		})();
+	</script>
 </body>
 
 </html>

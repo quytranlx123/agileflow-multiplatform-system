@@ -44,3 +44,4 @@ dist/
 node_modules/
 frontend/node/
 frontend/node_modules/
+.metadata/

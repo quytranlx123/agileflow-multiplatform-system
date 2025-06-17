@@ -9,7 +9,7 @@
 | Layer       | Công nghệ                        |
 |-------------|----------------------------------|
 | Backend     | Spring Boot (REST API, JWT, JPA) |
-| Web UI      | React + Tailwind CSS             |
+| Web UI      | React + Boostrap                 |
 | Mobile App  | React Native (Expo)              |
 | Desktop App | Electron + React                 |
 | Realtime    | WebSocket / Firebase             |
@@ -31,32 +31,20 @@
 ## 📁 Cấu trúc thư mục
 
 ```text
-agileflow-multiplatform-system/
-├── backend/                # Spring Boot API (REST, JWT, JPA)
-│   ├── src/                # Source code Java (controller, service, repo)
-│   └── ...                 # File cấu hình, Dockerfile, README backend
-│
-├── web-frontend/           # Giao diện Web (React + Tailwind CSS)
-│   ├── public/             # Static assets
-│   ├── src/                # Component, page, router, service call
-│   └── ...                 # Vite/Webpack config, README
-│
-├── mobile-app/             # Ứng dụng di động (React Native + Expo)
-│   ├── assets/             # Icon, hình ảnh tĩnh
-│   ├── src/                # Screens, navigation, API
-│   └── ...                 # App config, README
-│
-├── desktop-app/            # Ứng dụng desktop (Electron + React)
-│   ├── public/             # HTML Shell
-│   ├── src/                # Main & Renderer process
-│   └── ...                 # Cấu hình Electron
-│
-├── shared/                 # Giao diện chung & API spec
-│   ├── api-specs/          # Swagger / OpenAPI
-│   ├── interfaces/         # Interface TypeScript chung
-│   └── docs/               # Tài liệu kỹ thuật & agile
-│
-└── README.md               # Mô tả tổng quan dự án
+agileflow-backend/
+├── config/             # Cấu hình toàn hệ thống (CORS, Security, Swagger, v.v.)
+├── controller/         # REST API endpoints
+├── dto/                # Data Transfer Objects (request/response)
+├── entity/             # JPA Entities (mỗi class tương ứng với bảng DB)
+├── exception/          # Xử lý lỗi: custom exceptions, handlers
+├── repository/         # Interface JPA (tương ứng với mỗi entity)
+├── service/            # Business logic (tách khỏi controller)
+├── security/           # Cấu hình JWT, xác thực người dùng
+├── util/               # Các hàm tiện ích dùng chung
+├── resources/
+│   ├── db/migration/   # Flyway SQL migration scripts
+│   └── application.yml # Config (database, server port, jwt, etc.)
+└── AgileflowBackendApplication.java
 ```
 
 
